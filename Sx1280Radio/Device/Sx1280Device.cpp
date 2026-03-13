@@ -147,6 +147,12 @@ namespace Sx1280Radio {
 
         std::vector<std::uint8_t> tx_buffer(payload.begin(), payload.end());
 
+        auto tx_packet_params = m_config.lora.to_packet_params();
+        tx_packet_params.Params.LoRa.PayloadLength =
+            static_cast<std::uint8_t>(tx_buffer.size());
+
+        m_radio->SetPacketParams(tx_packet_params);
+
         m_radio->SendPayload(
             tx_buffer.data(),
             static_cast<std::uint8_t>(tx_buffer.size()),

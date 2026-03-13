@@ -63,6 +63,12 @@ Makefile
 *.dll
 *.exe
 *.out
+# Smoke test build outputs
+build-smoke/*.o
+build-smoke/hello_world_dual
+build-smoke/hw_smoke_rx
+build-smoke/hw_smoke_tx
+build-smoke/sx1280_smoke
 
 # =========================
 # Testing artifacts
@@ -102,3 +108,4 @@ secrets/
 # =========================
 site/
 docs/_build/
+

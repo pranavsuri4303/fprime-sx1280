@@ -251,11 +251,13 @@ namespace Sx1280Radio {
                 "sx1280-busy"
             );
 
-            dio1_request = requestInputLine(
-                gpio_chip,
-                config.pins.dio1_line,
-                "sx1280-dio1"
-            );
+            if (config.pins.has_dio1) {
+                dio1_request = requestInputLine(
+                    gpio_chip,
+                    config.pins.dio1_line,
+                    "sx1280-dio1"
+                );
+            }
 
             if (config.pins.has_dio2) {
                 dio2_request = requestInputLine(
@@ -340,6 +342,9 @@ namespace Sx1280Radio {
                     );
 
                 case SX128x::GPIO_PIN_DIO1:
+                    if (!config.pins.has_dio1 || !dio1_request) {
+                        return 0;
+                    }
                     return static_cast<std::uint8_t>(
                         getRequestedLineValue(dio1_request, config.pins.dio1_line) ==
                         GPIOD_LINE_VALUE_ACTIVE
@@ -523,9 +528,10 @@ namespace Sx1280Radio {
         switch (func) {
             case SX128x::GPIO_PIN_RESET:
             case SX128x::GPIO_PIN_BUSY:
+            
             case SX128x::GPIO_PIN_DIO1:
-                return true;
-
+                return m_impl->config.pins.has_dio1;
+                
             case SX128x::GPIO_PIN_DIO2:
                 return m_impl->config.pins.has_dio2;
 

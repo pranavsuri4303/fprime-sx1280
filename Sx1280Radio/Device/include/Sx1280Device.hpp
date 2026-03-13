@@ -48,10 +48,10 @@ namespace Sx1280Radio {
         virtual ~Sx1280DeviceListener() = default;
 
         virtual void onTxDone() {}
-        virtual void onRxDone(const Sx1280RxPacket& packet) {}
+        virtual void onRxDone(const Sx1280RxPacket&) {}
         virtual void onRxTimeout() {}
         virtual void onTxTimeout() {}
-        virtual void onRxError(SX128x::IrqErrorCode_t error_code) {}
+        virtual void onRxError(SX128x::IrqErrorCode_t) {}
     };
 
     class Sx1280Device {

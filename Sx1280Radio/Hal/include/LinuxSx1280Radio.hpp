@@ -36,6 +36,8 @@ namespace Sx1280Radio {
     struct LinuxSx1280PinConfig {
         std::uint32_t reset_line{0};
         std::uint32_t busy_line{0};
+
+        bool has_dio1{true};
         std::uint32_t dio1_line{0};
 
         bool has_dio2{false};
