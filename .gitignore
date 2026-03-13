@@ -63,6 +63,7 @@ Makefile
 *.dll
 *.exe
 *.out
+
 # Smoke test build outputs
 build-smoke/*.o
 build-smoke/hello_world_dual
