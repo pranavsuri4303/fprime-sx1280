@@ -4,7 +4,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <memory>
-#include <span>
 #include <vector>
 
 #include "Sx1280Config.hpp"
@@ -70,7 +69,8 @@ namespace Sx1280Radio {
         Sx1280DeviceError startRx(Sx1280ReceiveMode mode);
         Sx1280DeviceError stop();
 
-        Sx1280DeviceError send(std::span<const std::uint8_t> payload);
+        Sx1280DeviceError send(const std::uint8_t* payload, std::size_t size);
+        
         void processIrqs();
 
         void setListener(Sx1280DeviceListener* listener) noexcept;

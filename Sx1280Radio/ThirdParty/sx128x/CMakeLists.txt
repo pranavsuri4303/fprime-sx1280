@@ -1,7 +1,10 @@
-register_fprime_library(
-    Sx1280Radio_SX128x
-  SOURCES
-    "${CMAKE_CURRENT_LIST_DIR}/SX128x.cpp"
-  HEADERS
-    "${CMAKE_CURRENT_LIST_DIR}/SX128x.hpp"
+register_fprime_module(
+    SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/SX128x.cpp"
+)
+
+target_include_directories(
+    ${FPRIME_CURRENT_MODULE}
+    PUBLIC
+        "${CMAKE_CURRENT_LIST_DIR}"
 )

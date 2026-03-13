@@ -128,7 +128,7 @@ namespace Sx1280Radio {
         return Sx1280DeviceError::None;
     }
 
-    Sx1280DeviceError Sx1280Device::send(std::span<const std::uint8_t> payload) {
+    Sx1280DeviceError Sx1280Device::send(const std::uint8_t* payload, std::size_t size) {
         if (!m_initialized) {
             return Sx1280DeviceError::NotInitialized;
         }
@@ -137,7 +137,7 @@ namespace Sx1280Radio {
             return Sx1280DeviceError::RadioOperationFailed;
         }
 
-        if (!canSend(payload.size())) {
+        if (!canSend(size)) {
             return Sx1280DeviceError::PayloadTooLarge;
         }
 
@@ -145,7 +145,7 @@ namespace Sx1280Radio {
             return Sx1280DeviceError::Busy;
         }
 
-        std::vector<std::uint8_t> tx_buffer(payload.begin(), payload.end());
+        std::vector<std::uint8_t> tx_buffer(payload, payload + size);
 
         auto tx_packet_params = m_config.lora.to_packet_params();
         tx_packet_params.Params.LoRa.PayloadLength =
@@ -153,10 +153,10 @@ namespace Sx1280Radio {
 
         m_radio->SetPacketParams(tx_packet_params);
 
-        m_radio->SendPayload(
-            tx_buffer.data(),
-            static_cast<std::uint8_t>(tx_buffer.size()),
-            m_config.timeouts.tx_timeout
+        this->m_radio->SendPayload(
+            const_cast<std::uint8_t*>(payload),
+            static_cast<std::uint8_t>(size),
+            this->m_config.timeouts.tx_timeout
         );
 
         m_state = Sx1280DeviceState::Transmitting;

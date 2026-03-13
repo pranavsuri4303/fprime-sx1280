@@ -327,9 +327,7 @@ namespace Sx1280Radio {
         this->m_lastTxBytes = static_cast<U32>(size);
         this->tlmWrite_LastTxBytes(this->m_lastTxBytes);
 
-        const auto result = this->m_txDevice->send(
-            std::span<const std::uint8_t>(bytes, size)
-        );
+        const auto result = this->m_txDevice->send(bytes, size);
 
         this->returnDataInBuffer(data, context);
 
