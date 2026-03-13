@@ -1,0 +1,13 @@
+[project]
+name = "fprime-sx1280"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "fprime-bootstrap>=1.5.2",
+    "pytest>=9.0.2",
+]

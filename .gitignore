@@ -1,0 +1,104 @@
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+.venv/
+venv/
+env/
+
+# =========================
+# F' / fprime-util
+# =========================
+build-artifacts/
+install/
+log/
+logs/
+*.log
+
+# Common F' generated/build dirs
+build/
+Build/
+cmake-build-debug/
+cmake-build-release/
+
+# =========================
+# CMake / C++ build artifacts
+# =========================
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Makefile
+
+*.a
+*.o
+*.obj
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+
+# =========================
+# Testing artifacts
+# =========================
+Testing/
+test-output/
+*.gcda
+*.gcno
+*.gcov
+
+# =========================
+# Misc temp files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Local environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# =========================
+# Package / archive outputs
+# =========================
+*.tar
+*.tar.gz
+*.zip
+
+# =========================
+# Optional docs build outputs
+# =========================
+site/
+docs/_build/
