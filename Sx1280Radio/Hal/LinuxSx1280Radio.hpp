@@ -1,4 +1,10 @@
-// Sx1280Radio/Hal/include/LinuxSx1280Radio.hpp
+/*
+ * LinuxSx1280Radio.hpp
+ *
+ * Created on: Mar 14, 2026
+ * Author: Pranav
+ */
+
 #pragma once
 
 #include <cstdint>
@@ -37,7 +43,7 @@ namespace Sx1280Radio {
         std::uint32_t reset_line{0};
         std::uint32_t busy_line{0};
 
-        bool has_dio1{true};
+        bool has_dio1{false};
         std::uint32_t dio1_line{0};
 
         bool has_dio2{false};
@@ -91,4 +97,4 @@ namespace Sx1280Radio {
         [[nodiscard]] bool isPinConfigured(GpioPinFunction_t func) const;
     };
 
-}
+} // namespace Sx1280Radio

@@ -11,7 +11,7 @@ register_fprime_module(
 target_include_directories(
     ${FPRIME_CURRENT_MODULE}
     PUBLIC
-        "${CMAKE_CURRENT_LIST_DIR}/include"
+    "${CMAKE_CURRENT_LIST_DIR}"
         "${CMAKE_CURRENT_LIST_DIR}/../ThirdParty/sx128x"
 )
 

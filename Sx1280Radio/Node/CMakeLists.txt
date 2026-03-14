@@ -11,5 +11,5 @@ target_include_directories(
     PUBLIC
         "${CMAKE_CURRENT_LIST_DIR}"
         "${CMAKE_CURRENT_LIST_DIR}/../Config"
-        "${CMAKE_CURRENT_LIST_DIR}/../Hal/include"
+        "${CMAKE_CURRENT_LIST_DIR}/../Hal"
 )
