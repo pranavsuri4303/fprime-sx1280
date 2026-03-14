@@ -1,1 +1,0 @@
-set_property(GLOBAL PROPERTY FPRIME_Os_Cpu_Darwin_IMPLEMENTS Os_Cpu)

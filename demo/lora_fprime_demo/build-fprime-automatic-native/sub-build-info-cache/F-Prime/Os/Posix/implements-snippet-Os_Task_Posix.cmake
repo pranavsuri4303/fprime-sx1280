@@ -1,1 +1,0 @@
-set_property(GLOBAL PROPERTY FPRIME_Os_Task_Posix_IMPLEMENTS Os_Task)

@@ -1,1 +1,0 @@
-set_property(GLOBAL PROPERTY FPRIME_Svc_OsTime_test_RawTimeTester_IMPLEMENTS Os_RawTime)

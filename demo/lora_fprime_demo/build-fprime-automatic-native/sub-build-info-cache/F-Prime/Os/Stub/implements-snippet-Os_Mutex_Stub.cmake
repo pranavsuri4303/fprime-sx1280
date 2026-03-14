@@ -1,1 +1,0 @@
-set_property(GLOBAL PROPERTY FPRIME_Os_Mutex_Stub_IMPLEMENTS Os_Mutex)
