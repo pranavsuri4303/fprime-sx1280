@@ -1,6 +1,6 @@
 // File: Sx1280Radio/Components/LoraRadioManager/LoraRadioManager.cpp
 
-#include "Sx1280Radio/Components/LoraRadioManager/include/LoraRadioManager.hpp"
+#include "LoraRadioManager.hpp"
 
 #include <memory>
 #include <span>
@@ -105,8 +105,8 @@ namespace Sx1280Radio {
 
     LoraRadioManager::~LoraRadioManager() = default;
 
-    void LoraRadioManager::init(NATIVE_INT_TYPE instance) {
-        LoraRadioManagerComponentBase::init(instance);
+    void LoraRadioManager::init(FwSizeType queueDepth, FwEnumStoreType instance) {
+        LoraRadioManagerComponentBase::init(queueDepth, instance);
 
         this->configureDefaultRadioConfig();
 
@@ -120,6 +120,12 @@ namespace Sx1280Radio {
         this->tlmWrite_RxFailures(this->m_rxFailures);
         this->tlmWrite_LastTxBytes(this->m_lastTxBytes);
         this->tlmWrite_LastRxBytes(this->m_lastRxBytes);
+
+        if (this->createDevices() && this->startDevices()) {
+            this->m_started = true;
+            this->updateLinkRunningTlm();
+            this->emitInitialReadyIfNeeded();
+        }
     }
 
     void LoraRadioManager::configureDefaultRadioConfig() {
@@ -226,7 +232,8 @@ namespace Sx1280Radio {
         }
 
         if (this->isConnected_comStatusOut_OutputPort(0)) {
-            this->comStatusOut_out(0, Fw::Success::SUCCESS);
+            Fw::Success condition(Fw::Success::SUCCESS);
+            this->comStatusOut_out(0, condition);        
         }
 
         this->m_initialReadySent = true;
@@ -243,7 +250,8 @@ namespace Sx1280Radio {
 
     void LoraRadioManager::emitTransmitStatus(Fw::Success::T status) {
         if (this->isConnected_comStatusOut_OutputPort(0)) {
-            this->comStatusOut_out(0, status);
+            Fw::Success condition(status);
+            this->comStatusOut_out(0, condition);
         }
     }
 

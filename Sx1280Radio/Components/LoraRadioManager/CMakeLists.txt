@@ -1,10 +1,19 @@
-# File: Sx1280Radio/Components/LoraRadioManager/CMakeLists.txt
-
 register_fprime_module(
     AUTOCODER_INPUTS
         "${CMAKE_CURRENT_LIST_DIR}/LoraRadioManager.fpp"
     SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/LoraRadioManager.cpp"
+    HEADERS
+        "${CMAKE_CURRENT_LIST_DIR}/LoraRadioManager.hpp"
     DEPENDS
-        Sx1280Radio_Device
+        lib_fprime-sx1280_Sx1280Radio_Device
+)
+
+target_include_directories(
+    ${FPRIME_CURRENT_MODULE}
+    PUBLIC
+                "${CMAKE_CURRENT_BINARY_DIR}"
+        "${CMAKE_CURRENT_LIST_DIR}/../../Device/include"
+        "${CMAKE_CURRENT_LIST_DIR}/../../Hal/include"
+        "${CMAKE_CURRENT_LIST_DIR}/../../ThirdParty/sx128x"
 )

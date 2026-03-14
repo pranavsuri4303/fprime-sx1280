@@ -1,11 +1,12 @@
-// File: Sx1280Radio/Components/LoraRadioManager/include/LoraRadioManager.hpp
+// File: Sx1280Radio/Components/LoraRadioManager/LoraRadioManager.hpp
 #pragma once
 
 #include <memory>
 
-#include "Sx1280Radio/Components/LoraRadioManager/LoraRadioManagerComponentAc.hpp"
-#include "Sx1280Radio/Device/include/Sx1280Config.hpp"
-#include "Sx1280Radio/Device/include/Sx1280Device.hpp"
+#include "Fw/FPrimeBasicTypes.hpp"
+#include "LoraRadioManagerComponentAc.hpp"
+#include "Sx1280Config.hpp"
+#include "Sx1280Device.hpp"
 
 namespace Sx1280Radio {
 
@@ -14,8 +15,7 @@ namespace Sx1280Radio {
         explicit LoraRadioManager(const char* const compName);
         ~LoraRadioManager() override;
 
-        void init(NATIVE_INT_TYPE instance = 0);
-
+        void init(FwSizeType queueDepth, FwEnumStoreType instance = 0);
       private:
         class TxListener;
         class RxListener;
