@@ -3,6 +3,7 @@
 #include "LoRaNode.hpp"
 #include "NodeConfig.hpp"
 
+#include <algorithm>
 #include <chrono>
 #include <csignal>
 #include <cstdint>
@@ -42,7 +43,9 @@ int main() {
         LoRaNode node(cfg);
 
         node.setRxCallback([](const LoRaNodeRxPacket& pkt) {
-            std::string as_text(pkt.payload.begin(), pkt.payload.end());
+            const std::size_t msg_len = 11; // "Hello LoRa!"
+            const std::size_t n = std::min<std::size_t>(msg_len, pkt.payload.size());
+            std::string as_text(pkt.payload.begin(), pkt.payload.begin() + n);
             std::cout << "[rx] payload_len=" << pkt.payload.size()
                       << " text=\"" << as_text << "\""
                       << " rssi=" << static_cast<int>(pkt.rssi_dbm)
