@@ -1,0 +1,1 @@
+set_property(GLOBAL PROPERTY FPRIME_Os_Queue_Stub_IMPLEMENTS Os_Queue)

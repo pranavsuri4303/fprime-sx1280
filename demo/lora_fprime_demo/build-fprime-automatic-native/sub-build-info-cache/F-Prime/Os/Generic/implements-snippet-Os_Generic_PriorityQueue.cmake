@@ -1,0 +1,1 @@
+set_property(GLOBAL PROPERTY FPRIME_Os_Generic_PriorityQueue_IMPLEMENTS Os_Queue)

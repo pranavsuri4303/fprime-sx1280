@@ -1,0 +1,1 @@
+set_property(GLOBAL PROPERTY FPRIME_Os_Memory_Darwin_IMPLEMENTS Os_Memory)

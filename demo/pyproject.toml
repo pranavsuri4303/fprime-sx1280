@@ -7,6 +7,10 @@ readme = "README.md"
 license = { text = "Proprietary" }
 
 dependencies = [
+  "fprime-fpp",
+  "fprime-gds",
   "fprime-tools",
   "fprime-bootstrap",
+  "pip",
+  "setuptools>=80,<81",
 ]

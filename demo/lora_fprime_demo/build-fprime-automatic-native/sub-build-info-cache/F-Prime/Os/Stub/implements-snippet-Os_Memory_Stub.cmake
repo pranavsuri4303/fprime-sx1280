@@ -1,0 +1,1 @@
+set_property(GLOBAL PROPERTY FPRIME_Os_Memory_Stub_IMPLEMENTS Os_Memory)

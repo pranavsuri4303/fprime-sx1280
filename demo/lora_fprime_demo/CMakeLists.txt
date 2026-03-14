@@ -7,6 +7,14 @@ cmake_minimum_required(VERSION 3.24.2)
 project(LoraFprimeDemo C CXX)
 
 ###
+# External library locations
+###
+set(FPRIME_LIBRARY_LOCATIONS
+	"${FPRIME_LIBRARY_LOCATIONS}"
+	"${CMAKE_CURRENT_LIST_DIR}/../.."
+)
+
+###
 # F' Core Setup
 # This includes all of the F prime core components, and imports the make-system.
 ###

@@ -1,0 +1,1 @@
+set_property(GLOBAL PROPERTY FPRIME_Os_File_None_IMPLEMENTS Os_File)

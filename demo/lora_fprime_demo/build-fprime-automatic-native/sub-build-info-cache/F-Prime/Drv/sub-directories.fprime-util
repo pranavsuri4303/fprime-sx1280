@@ -1,0 +1,13 @@
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/Interfaces/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/Ports/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/AsyncByteStreamBufferAdapter/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/ByteStreamBufferAdapter/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/ByteStreamDriverModel/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/LinuxGpioDriver/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/LinuxI2cDriver/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/LinuxSpiDriver/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/LinuxUartDriver/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/Ip/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/TcpClient/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/TcpServer/
+/Users/pranav/Developer/fprime-sx1280/demo/lora_fprime_demo/lib/fprime/Drv/Udp/

@@ -1,0 +1,1 @@
+set_property(GLOBAL PROPERTY FPRIME_Os_Mutex_Posix_IMPLEMENTS Os_Mutex)
