@@ -1,4 +1,9 @@
-// File: Sx1280Radio/Hal/LinuxSx1280Radio.cpp
+/*
+ * LinuxSx1280Radio.hpp
+ *
+ * Created on: Mar 14, 2026
+ * Author: Pranav
+ */
 
 #include "LinuxSx1280Radio.hpp"
 

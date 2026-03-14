@@ -32,7 +32,7 @@ int main() {
         NodeConfig cfg{};
         std::string error;
 
-        const std::string yaml_path = "Sx1280Radio/Config/sx1280_dual.yaml";
+        const std::string yaml_path = "Sx1280Radio/Config/sx1280.yaml";
         const auto err = loadNodeConfigFromYaml(yaml_path, cfg, &error);
         if (err != NodeConfigError::None) {
             std::cerr << "Failed to load node config from '" << yaml_path
