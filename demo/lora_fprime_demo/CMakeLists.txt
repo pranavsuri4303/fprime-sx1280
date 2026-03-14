@@ -10,7 +10,6 @@ project(LoraFprimeDemo C CXX)
 # External library locations
 ###
 set(FPRIME_LIBRARY_LOCATIONS
-	"${FPRIME_LIBRARY_LOCATIONS}"
 	"${CMAKE_CURRENT_LIST_DIR}/../.."
 )
 
