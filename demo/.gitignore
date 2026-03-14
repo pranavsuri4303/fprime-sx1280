@@ -1,0 +1,13 @@
+# Python environment artifacts
+.venv/
+__pycache__/
+*.py[cod]
+
+# F' generated build output
+**/build-fprime-*/
+**/build-artifacts/
+**/install/
+**/log/
+**/logs/
+**/*.log
+**/.fprime/
