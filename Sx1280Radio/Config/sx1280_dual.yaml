@@ -1,0 +1,76 @@
+# SX1280 dual-radio configuration for current RPi-based setup
+
+radios:
+  rx:
+    role: "rx"                # rx | tx | txrx
+    spi:
+      device: "/dev/spidev0.0"
+      speed_hz: 1000000
+      mode: 0
+      bits_per_word: 8
+    gpio:
+      chip: "/dev/gpiochip4"
+    pins:
+      reset: 22               # LORA_RX_RESET
+      busy: 23                # LORA_RX_BUSY
+      has_dio1: true
+      dio1: 24                # LORA_RX_INT
+      has_dio2: false
+      dio2: 0
+      has_dio3: false
+      dio3: 0
+      has_tx_enable: false
+      tx_enable: 0
+      tx_enable_active_high: true
+      tx_enable_behavior: "none"          # none | static_asserted | static_deasserted | assert_during_tx
+
+  tx:
+    role: "tx"
+    spi:
+      device: "/dev/spidev0.1"
+      speed_hz: 1000000
+      mode: 0
+      bits_per_word: 8
+    gpio:
+      chip: "/dev/gpiochip4"
+    pins:
+      reset: 5                # LORA_TX_RESET
+      busy: 6                 # LORA_TX_BUSY
+      has_dio1: true
+      dio1: 25                # LORA_TX_INT
+      has_dio2: false
+      dio2: 0
+      has_dio3: false
+      dio3: 0
+      has_tx_enable: true
+      tx_enable: 12           # LORA_TX_EN
+      tx_enable_active_high: true
+      tx_enable_behavior: "assert_during_tx"
+
+lora:
+  frequency_hz: 2400000000
+  tx_power_dbm: 10
+  ramp_time: "20us"           # -> SX128x::RADIO_RAMP_20_US
+  regulator_mode: "dcdc"      # -> SX128x::USE_DCDC
+
+  spreading_factor: "sf7"
+  bandwidth: "bw_0800"
+  coding_rate: "cr_4_5"
+
+  preamble_length: 12
+  header_type: "variable_length"
+  payload_length: 64
+  crc: "on"
+  iq_mode: "normal"
+
+timeouts:
+  tx_ms: 2000
+  rx_ms: 2000
+  continuous_rx: true
+
+runtime:
+  auto_fs: true
+  long_preamble: false
+  use_manual_gain: false
+  manual_gain_value: 0
+  lna_setting: "high_sensitivity"
