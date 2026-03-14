@@ -55,8 +55,6 @@ namespace Sx1280Radio {
         bool has_tx_enable{false};
         std::uint32_t tx_enable_line{0};
         bool tx_enable_active_high{true};
-
-        RadioRole role{RadioRole::TxRx};
         TxEnableBehavior tx_enable_behavior{TxEnableBehavior::None};
     };
 

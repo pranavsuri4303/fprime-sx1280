@@ -110,18 +110,6 @@ namespace Sx1280Radio {
             return NodeRadioRole::TxRx;
         }
 
-        RadioRole to_radio_role(NodeRadioRole role) {
-            switch (role) {
-                case NodeRadioRole::Rx:
-                    return RadioRole::RxOnly;
-                case NodeRadioRole::Tx:
-                    return RadioRole::TxOnly;
-                case NodeRadioRole::TxRx:
-                default:
-                    return RadioRole::TxRx;
-            }
-        }
-
         TxEnableBehavior parse_tx_behavior(const std::string& v) {
             if (v == "none") {
                 return TxEnableBehavior::None;
@@ -317,7 +305,6 @@ namespace Sx1280Radio {
                         if (key == "role") {
                             const auto role = parse_node_role(value);
                             rhw.role = role;
-                            rhw.hw.pins.role = to_radio_role(role);
                         }
                     } else if (sub == SubSection::Spi) {
                         if (key == "device") {
