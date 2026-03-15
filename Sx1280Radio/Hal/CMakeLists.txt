@@ -5,7 +5,7 @@ register_fprime_module(
     SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/LinuxSx1280Radio.cpp"
     DEPENDS
-        lib_fprime-sx1280_Sx1280Radio_ThirdParty_sx128x
+        Sx1280Radio_ThirdParty_sx128x
 )
 
 target_include_directories(

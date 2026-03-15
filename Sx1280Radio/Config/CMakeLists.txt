@@ -2,7 +2,7 @@ register_fprime_module(
     SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/NodeConfigYaml.cpp"
     DEPENDS
-        lib_fprime-sx1280_Sx1280Radio_Hal
+        Sx1280Radio_Hal
 )
 
 target_include_directories(
