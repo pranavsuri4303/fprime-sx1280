@@ -103,7 +103,7 @@ void LoRaRadioAdapter::comStatusInit() {
     m_initialStatusSent = true;
 }
 
-void LoRaRadioAdapter::run_handler(const FwIndexType portNum, const Svc::SchedContext& context) {
+void LoRaRadioAdapter::run_handler(const FwIndexType portNum, U32 context) {
     (void)portNum;
     (void)context;
 
@@ -124,8 +124,7 @@ void LoRaRadioAdapter::run_handler(const FwIndexType portNum, const Svc::SchedCo
 
         const FwSizeType needed = static_cast<FwSizeType>(pkt.payload.size());
 
-        Fw::Buffer buffer;
-        this->allocate_out(0, needed, buffer);
+        Fw::Buffer buffer = this->allocate_out(0, needed);
 
         if (!buffer.isValid() || buffer.getSize() < needed) {
             // Drop packet if we cannot get a suitable buffer.

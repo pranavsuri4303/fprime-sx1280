@@ -37,7 +37,7 @@ class LoRaRadioAdapter final : public LoRaRadioAdapterComponentBase {
 
     // Scheduler handler to poll the underlying LoRa node and forward
     // received frames into the Com stack.
-    void run_handler(const FwIndexType portNum, const Svc::SchedContext& context) override;
+    void run_handler(const FwIndexType portNum, U32 context) override;
 
   private:
     // Internal helpers
