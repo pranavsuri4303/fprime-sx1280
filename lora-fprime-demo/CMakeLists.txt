@@ -6,6 +6,9 @@
 cmake_minimum_required(VERSION 3.24.2)
 project(LoraFprimeDemo C CXX)
 
+# Register external libraries before loading F' so their module roots are known.
+list(APPEND FPRIME_LIBRARY_LOCATIONS "${CMAKE_CURRENT_LIST_DIR}/..")
+
 ###
 # F' Core Setup
 # This includes all of the F prime core components, and imports the make-system.
@@ -13,8 +16,6 @@ project(LoraFprimeDemo C CXX)
 include("${CMAKE_CURRENT_LIST_DIR}/lib/fprime/cmake/FPrime.cmake")
 # NOTE: register custom targets between these two lines
 fprime_setup_included_code()
-
-include("${CMAKE_CURRENT_LIST_DIR}/../library.cmake")
 
 # This includes project-wide objects
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/LoraFprimeDemo")
