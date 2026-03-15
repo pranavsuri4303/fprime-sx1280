@@ -16,7 +16,7 @@ module LoraFprimeDemoDeployment {
   # Subtopology imports
   # ----------------------------------------------------------------------
     import CdhCore.Subtopology
-    import ComCcsds.Subtopology
+    import ComCcsds.FramingSubtopology
     import DataProducts.Subtopology
     import FileHandling.Subtopology
     
@@ -30,7 +30,7 @@ module LoraFprimeDemoDeployment {
     instance rateGroupDriver
     instance systemResources
     instance timer
-    instance comDriver
+    instance loraRadio
     instance cmdSeq
 
   # ----------------------------------------------------------------------
@@ -77,17 +77,18 @@ module LoraFprimeDemoDeployment {
     }
 
     connections Communications {
-      # ComDriver buffer allocations
-      comDriver.allocate      -> ComCcsds.commsBufferManager.bufferGetCallee
-      comDriver.deallocate    -> ComCcsds.commsBufferManager.bufferSendIn
-      
-      # ComDriver <-> ComStub (Uplink)
-      comDriver.$recv                     -> ComCcsds.comStub.drvReceiveIn
-      ComCcsds.comStub.drvReceiveReturnOut -> comDriver.recvReturnIn
-      
-      # ComStub <-> ComDriver (Downlink)
-      ComCcsds.comStub.drvSendOut      -> comDriver.$send
-      comDriver.ready         -> ComCcsds.comStub.drvConnected
+      # LoRa radio buffer allocations
+      loraRadio.allocate   -> ComCcsds.commsBufferManager.bufferGetCallee
+      loraRadio.deallocate -> ComCcsds.commsBufferManager.bufferSendIn
+
+      # Framer -> LoRa radio (Downlink)
+      ComCcsds.framer.dataOut         -> loraRadio.dataIn
+      loraRadio.dataReturnOut         -> ComCcsds.framer.dataReturnIn
+      loraRadio.comStatusOut          -> ComCcsds.framer.comStatusIn
+
+      # LoRa radio -> FrameAccumulator (Uplink)
+      loraRadio.dataOut                       -> ComCcsds.frameAccumulator.dataIn
+      ComCcsds.frameAccumulator.dataReturnOut -> loraRadio.dataReturnIn
     }
 
     connections FileHandling_DataProducts {
@@ -107,6 +108,7 @@ module LoraFprimeDemoDeployment {
       rateGroup1.RateGroupMemberOut[2] -> systemResources.run
       rateGroup1.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
       rateGroup1.RateGroupMemberOut[4] -> ComCcsds.aggregator.timeout
+      rateGroup1.RateGroupMemberOut[5] -> loraRadio.run
 
       # Rate group 2
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn

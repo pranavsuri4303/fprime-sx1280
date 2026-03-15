@@ -63,6 +63,6 @@ module LoraFprimeDemoDeployment {
 
   instance timer: Svc.LinuxTimer base id 0x10013000
 
-  instance comDriver: Drv.TcpClient base id 0x10014000
+  instance loraRadio: Sx1280Radio.LoRaRadioAdapter base id 0x10014000
 
 }

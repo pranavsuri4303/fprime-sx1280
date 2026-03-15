@@ -18,4 +18,5 @@ register_fprime_module(
         "${CMAKE_CURRENT_LIST_DIR}/LoraFprimeDemoDeploymentTopology.cpp"
     DEPENDS
         Fw_Logger
+        Sx1280Radio_ComAdapter
 )
