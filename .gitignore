@@ -38,6 +38,12 @@ log/
 logs/
 *.log
 
+# Keep required vendored framework sources under lib/fprime.
+!lora-fprime-demo/lib/fprime/**/Log/
+!lora-fprime-demo/lib/fprime/**/Log/**
+!lora-fprime-demo/lib/fprime/**/GTest/
+!lora-fprime-demo/lib/fprime/**/GTest/**
+
 # Common F' generated/build dirs
 build/
 Build/
