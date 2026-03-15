@@ -12,9 +12,9 @@ project(LoraFprimeDemo C CXX)
 ###
 include("${CMAKE_CURRENT_LIST_DIR}/lib/fprime/cmake/FPrime.cmake")
 # NOTE: register custom targets between these two lines
-include("${CMAKE_CURRENT_LIST_DIR}/../../library.cmake")
 fprime_setup_included_code()
 
+include("${CMAKE_CURRENT_LIST_DIR}/../../library.cmake")
 
 # This includes project-wide objects
 add_fprime_subdirectory("${CMAKE_CURRENT_LIST_DIR}/LoraFprimeDemo")
